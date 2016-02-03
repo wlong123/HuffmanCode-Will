@@ -47,4 +47,47 @@ public class HuffmanTree
 		return queue;
 	}
 	
+	public HuffmanNode createTree()
+	{
+		while(queue.size() > 1)
+		{
+			HuffmanNode end = queue.poll();
+			HuffmanNode end2 = queue.poll();
+			HuffmanNode toAdd = new HuffmanNode(end.getValue() + end2.getValue(), end.getCount() + end2.getCount());
+			root = toAdd;
+			queue.add(toAdd);
+			toAdd.setLeft(end);
+			toAdd.setRight(end2);
+		}
+		return root;
+	}
+	
+	public String encode(String s)
+	{
+		String output = "";
+		for(int i = 0; i < s.length(); i++)
+		{
+			HuffmanNode node = root;
+			while(node.getLeft() != null)
+			{
+				if(node.getLeft().getValue().contains(s.substring(i, i + 1)))
+				{
+					node = node.getLeft();
+					output += "1";
+				}
+				else if(node.getRight().getValue().contains(s.substring(i, i + 1)))
+				{
+					node = node.getRight();
+					output += "0";
+				}
+			}
+		}
+		return output;
+	}
+	
+	public String toString()
+	{
+		return root.toString();
+	}
+	
 }
