@@ -4,19 +4,8 @@ public class HuffmanRunner
 {
 	public static void main(String [] args)
 	{
-		HuffmanNode node = new HuffmanNode("a");
-		node.setCount(2);
-		System.out.println(node);
-		HuffmanNode node1 = new HuffmanNode("b");
-		System.out.println(node.compareTo(node1));
-		System.out.println("----------------");
-		HuffmanTree tree = new HuffmanTree("Mississippi");
-		//System.out.println(tree.map.get('p'));
-		PriorityQueue<HuffmanNode> queue = tree.createQueue();
-		System.out.println(queue);
-		System.out.println(queue.size());
-		HuffmanNode hufftree = tree.createTree();
-		System.out.println(hufftree.getRight().getRight());
-		System.out.println(tree.encode("M"));
+		HuffmanTree tree1 = new HuffmanTree("Mississippi river");
+		System.out.println(tree1.encode("Mississippi river"));
+		System.out.println(tree1.decode("0101001111001111001011010010010110001001000011"));
 	}
 }
